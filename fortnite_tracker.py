@@ -7,9 +7,12 @@ url = 'https://api.fortnitetracker.com/v1/profile/pc/'
 user = 'Schmusefant'
 
 
-def return_all_stats():
-    response = requests.get(url+user, headers={"TRN-Api-Key": APIKEY})
-    return format_lifetime_stats(response)
+def return_all_stats(username):
+    response = requests.get(url+username, headers={"TRN-Api-Key": APIKEY})
+    try:
+        return response.json()['error']
+    except KeyError:
+        return format_lifetime_stats(response)
 
 
 def format_lifetime_stats(response):
@@ -42,4 +45,4 @@ def format_lifetime_stats(response):
 if __name__ == '__main__':
     r1 = requests.get(url+user, headers={"TRN-Api-Key": APIKEY})
     print(r1)
-    print(json.dumps(r1.json()["epicUserHandle"], sort_keys=True, indent=4))
+    print(json.dumps(r1.json(), sort_keys=True, indent=4))

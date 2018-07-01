@@ -9,23 +9,14 @@ TOKEN = 'NDU5ODEyNDMzMTQ2NTQ0MTI4.Dg7pjQ.Dwuyze9_ZCqYDAEz8YuaEsmxx6Q'
 
 client = Bot(command_prefix=BOT_PREFIX)
 
-'''
-@client.command(name='help')
-async def help():
-    await client.say("""How to use me:
-                     Start your command by either ? or !
-                     Possible commands:
-                        hello
-                        WillIwin
-                        Whosthebest
-                        ftn""")
-'''
-
 
 @client.command(name='test', pass_context=True)
 async def test(context):
-    await client.say(context)
-
+    cmd = context.message.content.split()
+    if len(cmd) > 1:
+        await client.say(cmd[1])
+    else:
+        await client.say("No argument given")
 
 
 @client.command(name='WillIwin', pass_context=True)
@@ -52,12 +43,17 @@ async def hello(context):
 
 @client.command(name='ftn', pass_context=True, aliases=['fortnite'])
 async def ftn_stats(context):
-    await client.say("Here are the stats, " + context.message.author.mention+":\n"+ftn.return_all_stats())
+    cmd = context.message.content.split()
+    if len(cmd) > 1:
+        await client.say("Here are the stats, " + context.message.author.mention + ":\n" + ftn.return_all_stats(cmd[1]))
+    else:
+        await client.say("Usage:\n!ftn EpicUserName\nExample: !ftn Killerman")
+
 
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=Game(name="mit Daniel"))
+    await client.change_presence(game=Game(name="das Lied vom Tod"))
     print("Logged in as " + client.user.name)
 
 '''
