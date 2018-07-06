@@ -1,12 +1,12 @@
 import random
 import fortnite_tracker as ftn
-import token
+import my_token
 
 from discord import Game
 from discord.ext.commands import Bot
 
 BOT_PREFIX = ("!", "?")
-TOKEN = token.TOKEN
+TOKEN = my_token.TOKEN
 client = Bot(command_prefix=BOT_PREFIX)
 
 

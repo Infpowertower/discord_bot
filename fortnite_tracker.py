@@ -1,9 +1,9 @@
 import requests
 import json
-import token
+import my_token
 
 # TRN-Api-Key from fornitetracker.com
-APIKEY = token.APIKEY
+APIKEY = my_token.APIKEY
 url = 'https://api.fortnitetracker.com/v1/profile/pc/'
 user = 'Schmusefant'
 
