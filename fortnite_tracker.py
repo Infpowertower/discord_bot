@@ -3,7 +3,7 @@ import json
 import token
 
 # TRN-Api-Key from fornitetracker.com
-token.APIKEY = 'c4e9e33b-2661-4fe9-9b32-a766f246bff6'
+APIKEY = token.APIKEY
 url = 'https://api.fortnitetracker.com/v1/profile/pc/'
 user = 'Schmusefant'
 
